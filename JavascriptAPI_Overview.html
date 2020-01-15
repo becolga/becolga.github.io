@@ -27,7 +27,9 @@
           center: {lat: 48.734298, lng: 44.548338},
           zoom: 11,
           mapTypeId: 'terrain',
-          marker: {lat: 48.734298, lng: 44.548338}
+          var marker = new google.maps.Marker({
+          position: uluru,
+          map: map });
         });
       }
     </script>
