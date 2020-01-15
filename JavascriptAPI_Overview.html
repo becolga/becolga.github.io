@@ -27,11 +27,12 @@
           center: {lat: 48.734298, lng: 44.548338},
           zoom: 11,
           mapTypeId: 'terrain',
-          var marker = new google.maps.Marker({
-          position: uluru,
-          map: map });
         });
       }
+      var marker = new google.maps.Marker({
+      position: {lat: 48.734298, lng: 44.548338},
+      map: map
+      });
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhR_PC5PGJDqfpMpoaTkGDs3TGerw4URc&callback=initMap"
     async defer></script>
