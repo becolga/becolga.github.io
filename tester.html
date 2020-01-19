@@ -25,6 +25,7 @@
     <script>
       var center = {lat: 45.544736, lng: -69.074733};
       var location1 = {lat: 44.228478, lng: -76.485410};
+	    var location2 = {lat: 44.802496, lng: -68.770113};
       function initMap() {
 
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -32,6 +33,7 @@
           center: center
         });
         var kingston = new google.maps.Marker({position: location1, map: map, label: "1. Kingston"});
+		    var bangor = new google.maps.Marker({position: location2, map: map, label: "2. Bangor"});
       }
     </script>
     <!--Load the API from the specified URL
