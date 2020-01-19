@@ -2,11 +2,12 @@
 <html>
   <head>
     <style>
-      #map { <!-- Map ID to insert with "getElementbyID" method -->
+       /* Set the size of the div element that contains the map */
+      #map {
         height: 400px;
         width: 100%;
        }
-      .mapbox { <!-- Class for map container Div -->
+      .mapbox {
         margin-top: 10%;  /* The height is 400 pixels */
         margin-bottom: 10%;
         margin-right: 20%;
@@ -16,31 +17,29 @@
     </style>
   </head>
   <body>
-    <h1>Ben and Shiloh's Eastern Canada Adventure August 2019</h>
+    <h3>My Google Maps Demo</h3>
     <!--The div element for the map -->
-    <div class=mapbox>  <!-- Class to handle actual map ID -->
+    <div class=mapbox>  
       <div id="map"></div>
      </div>
 <script>
-	<!-- Source for initial map creation and adding markers: https://developers.google.com/maps/documentation/javascript/adding-a-google-map -->
 	var center = {lat: 45.544736, lng: -69.074733};
 	var location1 = {lat: 44.228478, lng: -76.485410};
 	var location2 = {lat: 44.802496, lng: -68.770113};
 	var location3 = {lat: 45.273522, lng: -66.070213};
-	var location4 = {lat: 46.232030, lng: -63.136317}; <!-- Location variables -->
+	var location4 = {lat: 46.232030, lng: -63.136317};
 	var location5 = {lat: 46.813495, lng: -71.209959};
 	var poi1 = {lat: 45.774418, lng: -71.954303};
 	var poi2 = {lat: 44.600363, lng: -66.898079};
 	var poi3 = {lat: 45.820317, lng: -64.572878};
-	function initMap() { <!-- Function to create a map --> 
+	function initMap() {
 
 		var map = new google.maps.Map(document.getElementById('map'), {
 			zoom: 6,
-			center: center,  <!-- Map options -- >
+			center: center,
 			mapTypeId: "satellite"
 		});
-	        <!-- Sources for labels and markers: https://stackoverflow.com/questions/41478502/google-map-marker-label-text-color-change/41483683, https://medium.com/free-code-camp/how-to-change-javascript-google-map-marker-color-8a72131d1207
-		https://sites.google.com/site/gmapsdevelopment/ -->
+	
 		var kingston = new google.maps.Marker({position: location1, map: map, label: {text: '1. Kingston, ON', color: 'white'}, icon: {url: "http://maps.google.com/mapfiles/ms/icons/flag.png"}});
 		var bangor = new google.maps.Marker({position: location2, map: map, label: {text: '2. Bangor, ME', color: 'white'}, icon: {url: "http://maps.google.com/mapfiles/ms/icons/flag.png"}});
 		var saintjohn = new google.maps.Marker({position: location3, map: map, label: {text: '3. Sanit John, N.B.', color: 'white'}, icon: {url: "http://maps.google.com/mapfiles/ms/icons/flag.png"}});
