@@ -25,6 +25,11 @@
     <script>
       var map;
       var marker;
+      var locations = [
+      {lat: 43.374334, lng: -80.968559},
+      {lat: 43.369230, lng: -80.981164}
+      ]
+      var labels = ["Festival Theatre", "Avon Theatre"];
       var center = {lat: 10.141739, lng: -175.542066};
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -32,7 +37,6 @@
           zoom: 2,
           mapTypeId: 'hybrid',
         });
-        var labels = ["Festival Theatre", "Avon Theatre"];
 
         // Add some markers to the map.
         // Note: The code uses the JavaScript Array.prototype.map() method to
@@ -49,12 +53,6 @@
         var markerCluster = new MarkerClusterer(map, markers,
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
        }
-       var locations = [
-       {lat: 43.374334, lng: -80.968559},
-       {lat: 43.369230, lng: -80.981164}
-       ]
-        marker = new google.maps.Marker({position: volga, map: map});
-      }
     </script>
     <!--Load the API from the specified URL
     * The async attribute allows the browser to render the page while the API loads
