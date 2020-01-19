@@ -23,14 +23,15 @@
       <div id="map"></div>
      </div>
     <script>
-      var center = {lat: 43.371316, lng: -80.982273};
+      var center = {lat: 45.560161, lng: -70.467654};
+      var location1 = {lat: 44.228478, lng: -76.485410};
       function initMap() {
 
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 3,
           center: center
         });
-        var marker = new google.maps.Marker({position: center, map: map, label: "Stratford"});
+        var kingston = new google.maps.Marker({position: location1, map: map, label: "1. Kingston"});
       }
     </script>
     <!--Load the API from the specified URL
