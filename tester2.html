@@ -1,8 +1,9 @@
+<!-- Map developed with Google Maps Javascript developer guide found here: https://developers.google.com/maps/documentation/javascript/tutorial -->
 <!DOCTYPE html>
 <html>
   <head>
     <title> Ben and Shiloh's East Coast Road Trip </title>
-    <style>
+    <style> /* Embedded/Internal CSS style section */
        /* Map ID for use with getElementbyID method */
       #map {
         height: 400px;
@@ -15,7 +16,7 @@
         margin-right: 20%;
         margin-left: 20%;
        }
-      h1{
+      h1{ /* Text specs and options sourced from: https://www.w3schools.com/css/css_text.asp */
         text-align: center;
         font-family: Lucida Sans Unicode;
         font-weight: normal;
@@ -30,7 +31,7 @@
 	background-image: url('https://becolga.github.io/grandmanan.jpg');
 	background-size: cover;
        }
-      p {
+      p { /* Text specs and options sourced from: https://www.w3schools.com/css/css_text.asp */
 	text-align: center;
 	font-family: Lucida Sans Unicode; 
 	color: #00219a;
@@ -51,7 +52,7 @@
     <div class=textbox>  
       <div id="map"></div>
      </div>
-<script>
+<script> /* Javascript section using script tag */
 	// Source for initial map creation and adding markers: https://developers.google.com/maps/documentation/javascript/adding-a-google-map
 	var center = {lat: 45.544736, lng: -69.074733};
 	var location1 = {lat: 44.228478, lng: -76.485410};
@@ -82,7 +83,7 @@
 		var hopewell = new google.maps.Marker({position: poi3, map: map, label: {text: 'P.O.I #3. Hopewell Rocks, N.B.', color: 'white'}, icon: {url: "http://maps.google.com/mapfiles/ms/icons/grn-pushpin.png"}});
 	}
 </script>
-    <!-- callback parameter initializes the map -->
+    <!-- Script to use callback parameter to initialize the map using my API key -->
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhR_PC5PGJDqfpMpoaTkGDs3TGerw4URc&callback=initMap">
     </script>
