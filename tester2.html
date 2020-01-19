@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;
+        width: 100%;
+       }
+      .mapbox {
+        margin-top: 10%;  /* The height is 400 pixels */
+        margin-bottom: 10%;
+        margin-right: 20%;
+        margin-left: 20%;
+       }
+      
+    </style>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <!--The div element for the map -->
+    <div class=mapbox>  
+      <div id="map"></div>
+     </div>
+    <script>
+      var center = {lat: 45.544736, lng: -69.074733};
+      var location1 = {lat: 44.228478, lng: -76.485410};
+      var location2 = {lat: 44.802496, lng: -68.770113};
+      var location3 = {lat: 45.273522, lng: -66.070213};
+      var location4 = {lat: 46.232030, lng: -63.136317};
+      var location5 = {lat: 46.813495, lng: -71.209959};
+      function initMap() {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 6,
+          center: center,
+	      mapTypeId: "terrain"
+        });
+        var kingston = new google.maps.Marker({position: location1, map: map, label: "1. Kingston"});
+        var bangor = new google.maps.Marker({position: location2, map: map, label: "2. Bangor"});
+        var saintjohn = new google.maps.Marker({position: location3, map: map, label: "3. Saint John"});
+        var charlottetown = new google.maps.Marker({position: location4, map: map, label: "4. Charlottetown"});
+        var quebec = new google.maps.Marker({position: location5, map: map, label: "5. Quebec City"});
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhR_PC5PGJDqfpMpoaTkGDs3TGerw4URc&callback=initMap">
+    </script>
+  </body>
+</html>
