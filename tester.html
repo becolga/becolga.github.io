@@ -23,14 +23,14 @@
       <div id="map"></div>
      </div>
     <script>
-
+      var center = {lat: 43.371316, lng: -80.982273};
       function initMap() {
 
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 3,
-          center: {lat: 43.371316, lng: -80.982273}
+          center: center
         });
-
+        var marker = new google.maps.Marker({position: center, map: map, label: "Stratford"});
         // Create an array of alphabetical characters used to label the markers.
         var labels = ["Festival Theatre", "Avon Theatre"];
 
@@ -53,7 +53,6 @@
         {lat: 43.374334, lng: -80.968559},
         {lat: 43.369230, lng: -80.981164}
       ]
-      markers.setMap(map);
     </script>
     <!--Load the API from the specified URL
     * The async attribute allows the browser to render the page while the API loads
