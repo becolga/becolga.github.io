@@ -25,11 +25,11 @@
     <script>
       var map;
       var marker;
-      var volga = {lat: 48.734298, lng: 44.548338};
+      var center = {lat: 10.141739, lng: -175.542066};
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          center: volga,
-          zoom: 15,
+          center: center,
+          zoom: 2,
           mapTypeId: 'hybrid',
         });
         marker = new google.maps.Marker({position: volga, map: map});
