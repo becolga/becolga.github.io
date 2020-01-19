@@ -19,6 +19,7 @@
   </head>
   <body>
     <h1>Ben and Shiloh's Eastern Canada Road Trip in August 2019</h1>
+    <p>In August of 2019 myself and my wife Shiloh took at trip to the east coast of Canada that included five major stops and a few interesting stop at points of interest along the way. </p>
     <div class=mapbox>  
       <div id="map"></div>
      </div>
@@ -41,6 +42,8 @@
 			mapTypeId: "satellite"
 		});
 	        // Instances of marker method to create markers referenced to my location variables.
+		// Sources for labels and markers: https://stackoverflow.com/questions/41478502/google-map-marker-label-text-color-change/41483683, https://medium.com/free-code-camp/how-to-change-javascript-google-map-marker-color-8a72131d1207
+		// https://sites.google.com/site/gmapsdevelopment/
 		var kingston = new google.maps.Marker({position: location1, map: map, label: {text: '1. Kingston, ON', color: 'white'}, icon: {url: "http://maps.google.com/mapfiles/ms/icons/flag.png"}});
 		var bangor = new google.maps.Marker({position: location2, map: map, label: {text: '2. Bangor, ME', color: 'white'}, icon: {url: "http://maps.google.com/mapfiles/ms/icons/flag.png"}});
 		var saintjohn = new google.maps.Marker({position: location3, map: map, label: {text: '3. Sanit John, N.B.', color: 'white'}, icon: {url: "http://maps.google.com/mapfiles/ms/icons/flag.png"}});
@@ -51,11 +54,7 @@
 		var hopewell = new google.maps.Marker({position: poi3, map: map, label: {text: 'P.O.I #3. Hopewell Rocks, N.B.', color: 'white'}, icon: {url: "http://maps.google.com/mapfiles/ms/icons/grn-pushpin.png"}});
 	}
 </script>
-    <!--Load the API from the specified URL
-    * The async attribute allows the browser to render the page while the API loads
-    * The key parameter will contain your own API key (which is not needed for this tutorial)
-    * The callback parameter executes the initMap() function
-    -->
+    <!-- callback parameter initializes the map -->
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhR_PC5PGJDqfpMpoaTkGDs3TGerw4URc&callback=initMap">
     </script>
