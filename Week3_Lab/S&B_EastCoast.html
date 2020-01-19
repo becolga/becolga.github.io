@@ -1,0 +1,92 @@
+<!-- Map developed with Google Maps Javascript developer guide found here: https://developers.google.com/maps/documentation/javascript/tutorial -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Ben and Shiloh's East Coast Road Trip </title>
+    <style> /* Embedded/Internal CSS style section */
+       /* Map ID for use with getElementbyID method */
+      #map {
+        height: 400px;
+        width: 100%;
+       }
+       /* Div container for the map */  
+      .mapbox { 
+        margin-top: 10%; 
+        margin-bottom: 10%;
+        margin-right: 20%;
+        margin-left: 20%;
+       }
+      h1{ /* Text specs and options sourced from: https://www.w3schools.com/css/css_text.asp */
+        text-align: center;
+        font-family: Lucida Sans Unicode;
+        font-weight: normal;
+        color: #6becb6;
+        border: 1px solid black;
+        margin-top: 10px;
+        margin-right: 0px;
+        margin-left: 0px;
+        background-color: #6383c3;
+       }
+      body { /* Background image method sourced from: https://www.w3schools.com/html/tryit.asp?filename=tryhtml_images_background7 */
+	background-image: url('https://becolga.github.io/grandmanan.jpg');
+	background-size: cover;
+       }
+      p { /* Text specs and options sourced from: https://www.w3schools.com/css/css_text.asp */
+	text-align: center;
+	font-family: Lucida Sans Unicode; 
+	color: #00219a;
+       }
+      .textbox { 
+        margin-top: 5%; 
+        margin-bottom: 5%;
+        margin-right: 20%;
+        margin-left: 20%;
+       }
+    </style>
+  </head>
+  <body>
+    <h1>Ben and Shiloh's East Coast Road Trip</h1>
+    <div class=textbox>
+    	<p>In August of 2019 myself and my wife Shiloh took at trip to the east coast of Canada that included five major stops and a few interesting stops at points of interest along the way. In all, we travelled more than 2800 Km. Check out the map below to see our major stops (flag icons) and points of interest we thought were pretty cool (green thumb tack).</p>
+    </div>
+    <div class=textbox>  
+      <div id="map"></div>
+     </div>
+<script> /* Javascript section using script tag */
+	// Source for initial map creation and adding markers: https://developers.google.com/maps/documentation/javascript/adding-a-google-map
+	var center = {lat: 45.544736, lng: -69.074733};
+	var location1 = {lat: 44.228478, lng: -76.485410};
+	var location2 = {lat: 44.802496, lng: -68.770113};
+	var location3 = {lat: 45.273522, lng: -66.070213}; // location variables created and specified
+	var location4 = {lat: 46.232030, lng: -63.136317};
+	var location5 = {lat: 46.813495, lng: -71.209959};
+	var poi1 = {lat: 45.774418, lng: -71.954303};
+	var poi2 = {lat: 44.600363, lng: -66.898079};
+	var poi3 = {lat: 45.820317, lng: -64.572878};
+	function initMap() { // function to create the map
+
+		var map = new google.maps.Map(document.getElementById('map'), { // Takes the ID uses getElementById method to drop into HTML
+			zoom: 6,
+			center: center, // Map options
+			mapTypeId: "satellite"
+		});
+	        // Instances of marker method to create markers referenced to my location variables.
+		// Sources for labels and markers: https://stackoverflow.com/questions/41478502/google-map-marker-label-text-color-change/41483683, https://medium.com/free-code-camp/how-to-change-javascript-google-map-marker-color-8a72131d1207
+		// https://sites.google.com/site/gmapsdevelopment/, https://developers.google.com/maps/documentation/javascript/markers
+		var kingston = new google.maps.Marker({position: location1, map: map, label: {text: '1. Kingston, ON', color: 'white'}, icon: {url: "http://maps.google.com/mapfiles/ms/icons/flag.png"}});
+		var bangor = new google.maps.Marker({position: location2, map: map, label: {text: '2. Bangor, ME', color: 'white'}, icon: {url: "http://maps.google.com/mapfiles/ms/icons/flag.png"}});
+		var saintjohn = new google.maps.Marker({position: location3, map: map, label: {text: '3. Sanit John, N.B.', color: 'white'}, icon: {url: "http://maps.google.com/mapfiles/ms/icons/flag.png"}});
+		var charlottetown = new google.maps.Marker({position: location4, map: map, label: {text: '4. Charlottetown, P.E.I.', color: 'white'}, icon: {url: "http://maps.google.com/mapfiles/ms/icons/flag.png"}});
+		var quebec = new google.maps.Marker({position: location5, map: map, label: {text: '5. Quebec City, QC', color: 'white'}, icon: {url: "http://maps.google.com/mapfiles/ms/icons/flag.png"}});
+		var asbestos = new google.maps.Marker({position: poi1, map: map, label: {text: 'P.O.I #1. Asbestos, QC', color: 'white'}, icon: {url: "http://maps.google.com/mapfiles/ms/icons/grn-pushpin.png"}});
+		var grandmanan = new google.maps.Marker({position: poi2, map: map, label: {text: 'P.O.I #2. Grand Manan, N.B.', color: 'white'}, icon: {url: "http://maps.google.com/mapfiles/ms/icons/grn-pushpin.png"}});
+		var hopewell = new google.maps.Marker({position: poi3, map: map, label: {text: 'P.O.I #3. Hopewell Rocks, N.B.', color: 'white'}, icon: {url: "http://maps.google.com/mapfiles/ms/icons/grn-pushpin.png"}});
+		
+	}
+</script>
+    <!-- Script to use callback parameter to initialize the map using my API key -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhR_PC5PGJDqfpMpoaTkGDs3TGerw4URc&callback=initMap">
+    </script>
+  </body>
+</html>
