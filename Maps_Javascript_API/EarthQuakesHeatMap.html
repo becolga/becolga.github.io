@@ -47,6 +47,7 @@
           data: heatmapData,
           dissipating: false,
           map: map
+		});
       function changeGradient() {
         var gradient = [
           'rgba(0, 255, 255, 0)',
@@ -66,8 +67,8 @@
         ]
         heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
       }
-        });
-      }
+
+     }
     </script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization&callback=initMap">
