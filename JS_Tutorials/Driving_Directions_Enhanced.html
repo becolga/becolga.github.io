@@ -52,7 +52,7 @@
       });
       view.ui.add(directions, "top-right");
   
-	function createStopSymbolfirst(color, size, style) {
+	function createStopSymbol(color, size, style) {
     return new SimpleMarkerSymbol({
      style: style,
      size: size,
@@ -64,32 +64,10 @@
     });
    }
 
-	function createStopSymbollast(color, size, style) {
-    return new SimpleMarkerSymbol({
-     style: style,
-     size: size,
-     outline: {
-      width: "4px",
-      color: "white"
-     },
-     color: color
-    });
-   }
-	function createStopSymbol(color, size) {
-    return new SimpleMarkerSymbol({
-     style: "x",
-     size: size,
-     outline: {
-      width: "4px",
-      color: "white"
-     },
-     color: color
-    });
-   }
    // Stop symbols
-   directions.stopSymbols.first = createStopSymbolfirst("#2ca25f","20px", "circle");
+   directions.stopSymbols.first = createStopSymbol("#2ca25f","20px", "circle");
    directions.stopSymbols.middle = createStopSymbol("black","10px");
-   directions.stopSymbols.last = createStopSymbollast("red","40px", "circle);
+   directions.stopSymbols.last = createStopSymbol("red","40px", "circle");
 
    // Route symbol
    directions.routeSymbol.width = "2";
