@@ -1,0 +1,83 @@
+<html>
+<head>
+<meta name="description" content="DevLabs - Get driving directions">
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>ArcGIS JavaScript Tutorials: Driving Directions</title>
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+    .esri-view .esri-directions {
+    	position: fixed;
+    	right: 15px;
+      max-height: calc(100% - 45px) !important;
+    }
+    .esri-view .esri-component.esri-attribution {
+    	position: fixed;
+    }
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.13/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.13/"></script>
+  <script>
+    require([
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/widgets/Directions",
+        "esri/symbols/SimpleMarkerSymbol"
+      ], function(Map, MapView, Directions, SimpleMarkerSymbol) {
+
+      var map = new Map({
+        basemap: "streets-navigation-vector"
+      });
+
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        center: [-118.24532,34.05398],
+        zoom: 12,
+        padding: {
+          right: 320
+        }
+      });
+      
+      // To allow access to the route service and prevent the user from signing in, do the Challenge step in the lab to set up a service proxy
+      
+      var directions = new Directions({
+        view: view,
+        routeServiceUrl: "https://utility.arcgis.com/usrsvcs/appservices/htCwuQLES3tUBxlK/rest/services/World/Route/NAServer/Route_World"
+      });
+      view.ui.add(directions, "top-right");
+	  
+	function createStopSymbol(color, size) {
+    return new SimpleMarkerSymbol({
+     style: "simple-marker",
+     size: size,
+     outline: {
+      width: "2px",
+      color: "white"
+     },
+     color: color
+    });
+   }
+
+   // Stop symbols
+   directions.stopSymbols.first = createStopSymbol("green","14px");
+   directions.stopSymbols.middle = createStopSymbol("black","10px");
+   directions.stopSymbols.last = createStopSymbol("red","14px");
+
+   // Route symbol
+   directions.routeSymbol.width = "2";
+   directions.routeSymbol.color = [0, 0, 0, 0.75];
+   directions.routeSymbol.style = "short-dot";
+      
+  });
+  </script>
+</head>
+<body>
+  <div id="viewDiv"></div>
+</body>
+</html>
