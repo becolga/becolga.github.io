@@ -66,16 +66,16 @@
 
    // Stop symbols
    // Source for changing symbols : https://developers.arcgis.com/javascript/latest/api-reference/esri-symbols-SimpleMarkerSymbol.html#style
-   directions.stopSymbols.first = createStopSymbol("#F26AFB","40px", "circle");
+   directions.stopSymbols.first = createStopSymbol("#F26AFB","40px", "circle"); // Pass variables for colour, size, and type into "createStopSymbol" function.
    directions.stopSymbols.middle = createStopSymbol("#77FC45","35px","diamond");
    directions.stopSymbols.last = createStopSymbol("#6AF7FB","40px", "circle");
 
    // Route symbol
    // Source for changing route symbol: https://developers.arcgis.com/javascript/latest/api-reference/esri-symbols-SimpleLineSymbol.html
-   directions.routeSymbol.width = "6";
-   directions.routeSymbol.color = "#3865F1"; 
-   directions.routeSymbol.style = "solid";
-   directions.routeSymbol.join = "bevel";
+   directions.routeSymbol.width = "6"; // change route width
+   directions.routeSymbol.color = "#3865F1"; // change line route colour
+   directions.routeSymbol.style = "solid"; // change route symbol
+   directions.routeSymbol.join = "miter"; // Change rendering of angles 
       
   });
   </script>
