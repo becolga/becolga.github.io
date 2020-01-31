@@ -51,6 +51,10 @@
         routeServiceUrl: "https://utility.arcgis.com/usrsvcs/appservices/htCwuQLES3tUBxlK/rest/services/World/Route/NAServer/Route_World"
       });
       view.ui.add(directions, "top-right");
+      var stop_sign = new WebStyleSymbol({
+        name: "Stop",
+        styleName: "EsriRealisticSignsandSignalsStyle"
+      });
 	  
 	function createStopSymbol(color, size) {
     return new SimpleMarkerSymbol({
@@ -67,7 +71,7 @@
    // Stop symbols
    directions.stopSymbols.first = createStopSymbol("green","14px");
    directions.stopSymbols.middle = createStopSymbol("black","10px");
-   directions.stopSymbols.last = createStopSymbol("red","14px");
+   directions.stopSymbols.last = stopsign;
 
    // Route symbol
    directions.routeSymbol.width = "2";
