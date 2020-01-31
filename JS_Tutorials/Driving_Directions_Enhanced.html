@@ -75,10 +75,20 @@
      color: color
     });
    }
-
+	function createStopSymbolmiddle(color, size) {
+    return new SimpleMarkerSymbol({
+     style: "x",
+     size: size,
+     outline: {
+      width: "4px",
+      color: "white"
+     },
+     color: color
+    });
+   }
    // Stop symbols
    directions.stopSymbols.first = createStopSymbolfirst("#2ca25f","40px");
-   directions.stopSymbols.middle = createStopSymbollast("black","10px");
+   directions.stopSymbols.middle = createStopSymbolmiddle("black","10px");
    directions.stopSymbols.last = createStopSymbollast("#f03b20","40px");
 
    // Route symbol
