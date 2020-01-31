@@ -1,9 +1,11 @@
 <html>
 <head>
+// Main code sourced from https://developers.arcgis.com/labs/javascript/driving-directions/
+// Changes and enhancements are cited throughout.
 <meta name="description" content="DevLabs - Get driving directions">
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>ArcGIS JavaScript Tutorials: Driving Directions</title>
+  <title>Driving Directions Enhanced: B. Colgan - GEOM99</title>
   <style>
     html, body, #viewDiv {
       padding: 0;
@@ -48,10 +50,14 @@
       
       var directions = new Directions({
         view: view,
+        // Created an authentication app to allow use of premium directions function without requiring authentication each time.
+	// Used service proxies through my newly created app to enable Routing and Directions from my Fleming developer account.
         routeServiceUrl: "https://utility.arcgis.com/usrsvcs/appservices/htCwuQLES3tUBxlK/rest/services/World/Route/NAServer/Route_World"
       });
       view.ui.add(directions, "top-right");
   
+       // Challenge element of the "Driving Directions" (https://developers.arcgis.com/labs/javascript/driving-directions/) Tutorial.
+       // Additional resources for changing symbology cited below.
 	function createStopSymbol(color, size, style) {
     return new SimpleMarkerSymbol({
      style: style,
@@ -65,13 +71,13 @@
    }
 
    // Stop symbols
-   // Source for changing symbols : https://developers.arcgis.com/javascript/latest/api-reference/esri-symbols-SimpleMarkerSymbol.html#style
+   // Source for changing symbols: Javascript API V 4.14; https://developers.arcgis.com/javascript/latest/api-reference/esri-symbols-SimpleMarkerSymbol.html#style
    directions.stopSymbols.first = createStopSymbol("#F26AFB","40px", "circle"); // Pass variables for colour, size, and type into "createStopSymbol" function.
    directions.stopSymbols.middle = createStopSymbol("#77FC45","35px","diamond");
    directions.stopSymbols.last = createStopSymbol("#6AF7FB","40px", "circle");
 
    // Route symbol
-   // Source for changing route symbol: https://developers.arcgis.com/javascript/latest/api-reference/esri-symbols-SimpleLineSymbol.html
+   // Source for changing route symbol: Javascript API V 4.14; https://developers.arcgis.com/javascript/latest/api-reference/esri-symbols-SimpleLineSymbol.html
    directions.routeSymbol.width = "6"; // change route width
    directions.routeSymbol.color = "#3865F1"; // change line route colour
    directions.routeSymbol.style = "solid"; // change route symbol
