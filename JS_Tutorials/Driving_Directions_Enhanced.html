@@ -65,13 +65,14 @@
    }
 
    // Stop symbols
+   // Source for changing symbols : https://developers.arcgis.com/javascript/latest/api-reference/esri-symbols-SimpleMarkerSymbol.html#style
    directions.stopSymbols.first = createStopSymbol("#F26AFB","40px", "circle");
    directions.stopSymbols.middle = createStopSymbol("black","10px");
    directions.stopSymbols.last = createStopSymbol("#6AF7FB","40px", "circle");
 
    // Route symbol
    directions.routeSymbol.width = "2";
-   directions.routeSymbol.color = [0, 0, 0, 0.75]; // #C9FF2E
+   directions.routeSymbol.color = "#C9FF2E"; // #C9FF2E
    directions.routeSymbol.style = "short-dot";
       
   });
