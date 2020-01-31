@@ -52,12 +52,12 @@
       });
       view.ui.add(directions, "top-right");
   
-	function createStopSymbol(color, size) {
+	function createStopSymbolfirst(color, size) {
     return new SimpleMarkerSymbol({
      style: "diamond",
      size: size,
      outline: {
-      width: "2px",
+      width: "4px",
       color: "white"
      },
      color: color
@@ -65,7 +65,7 @@
    }
 
    // Stop symbols
-   directions.stopSymbols.first = createStopSymbol("green","14px");
+   directions.stopSymbols.first = createStopSymbolfirst("#2ca25f","20px");
    directions.stopSymbols.middle = createStopSymbol("black","10px");
    directions.stopSymbols.last = createStopSymbol("red","14px");
 
