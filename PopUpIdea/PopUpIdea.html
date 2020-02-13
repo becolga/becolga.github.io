@@ -6,7 +6,10 @@
   <title>"TEST DIV"Clickable Children's Map of Canada</title>
   <style>
     html,
-    body,
+    body { /* Background image method sourced from: https://www.w3schools.com/html/tryit.asp?filename=tryhtml_images_background7 */
+	background-image: url('https://becolga.github.io/Week3_Lab/grandmanan.jpg');
+	background-size: cover;
+       }
     #viewDiv {
       padding: 0;
       margin: 0;
@@ -19,6 +22,26 @@
       margin-right: 20%;
       margin-left: 20%;
      }
+    h1{ /* Text specs and options sourced from: https://www.w3schools.com/css/css_text.asp */
+      text-align: center;
+      font-family: Lucida Sans Unicode;
+      font-weight: normal;
+      color: #6becb6;
+      border: 1px solid black;
+      margin-top: 10px;
+      margin-right: 0px;
+      margin-left: 0px;
+      background-color: #6383c3;
+     }
+    body { /* Background image method sourced from: https://www.w3schools.com/html/tryit.asp?filename=tryhtml_images_background7 */
+      background-image: url('https://becolga.github.io/Week3_Lab/grandmanan.jpg');
+      background-size: cover;
+     }
+    p { /* Text specs and options sourced from: https://www.w3schools.com/css/css_text.asp */
+      text-align: center;
+      font-family: Lucida Sans Unicode; 
+      color: #00219a;
+    }
   </style>
   <link rel="stylesheet" href="https://js.arcgis.com/4.13/esri/css/main.css">
   <script src="https://js.arcgis.com/4.13/"></script>
@@ -69,6 +92,10 @@
 </head>
 
 <body>
+  <h1> Learn about Canada's Provinces and Territories! </h1>
+  <div class=textbox>
+    <p> Zoom in and click on each Provinces or Territory to learn more. Don't forget about P.E.I.! </p>
+  </div>
  <div class=textbox>
   <div id="viewDiv"></div>
   </div>
