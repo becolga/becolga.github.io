@@ -13,7 +13,7 @@
     #viewDiv {
       padding: 0;
       margin: 0;
-      height: 400px;
+      height: 600px;
       width: 100%;
     }
     .textbox { 
@@ -48,7 +48,7 @@
   <script src="https://js.arcgis.com/4.13/"></script>
 </head>
 
-<script>
+<script> // Pop=up script sourced from ESRI "Configure pop-ups" tutorial: https://developers.arcgis.com/labs/javascript/configure-pop-ups/
   require([
       "esri/Map",
       "esri/views/MapView",
@@ -73,14 +73,14 @@
 
       // Define a popup for Provinces
       var popupProvinces = {
-        "title": "Our Home and Native Land",
+        "title": "Our Home and Native Land", // Pop-up content
         "content": "<b>Province/Territory:</b> {PRNAME}"
       }
       
       // Create the layer and set the popup
       var provinces = new FeatureLayer({
-        url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99/BecolgaCanadaPro/MapServer/0",
-        outFields: ["PRNAME"],
+        url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99/BecolgaCanadaPro/MapServer/0", // Sources map service
+        outFields: ["PRNAME"], // Passess PRNAME into pop=up template.
         popupTemplate: popupProvinces
       });
           
