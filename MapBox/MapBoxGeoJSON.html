@@ -40,12 +40,6 @@
             'layout': {},
             'paint': {'fill-color': '#088','fill-opacity': 0.8}
         });
-    });
-    map.on('load', function() {
-        window.setInterval(function() {
-            map.getSource('canada').setData(urlTwo);
-        }, 2000);
-
         map.addSource('canada', { type: 'geojson', data: urlTwo });
         map.addLayer({
             'id': 'canada2',
