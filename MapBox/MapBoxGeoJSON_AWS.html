@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Two Provinces GeoJSON Output</title>
+<title>AWS EC2 Two Provinces GeoJSON Output</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />
@@ -27,9 +27,9 @@
     // Modify this to place your own map service URL here. Show one or more provinces--do not just show Ontario like this example. 
     var url = 'https://myownserver.duckdns.org:6443/arcgis/rest/services/Week7_8_Canada_Map_VM/CanadaWebMap/MapServer/0/query?where=PRNAME%3D%27Manitoba%27&returnGeometry=true&returnTrueCurves=false&returnExtentOnly=false&f=geojson';
     var urlTwo = 'https://myownserver.duckdns.org:6443/arcgis/rest/services/Week7_8_Canada_Map_VM/CanadaWebMap/MapServer/0/query?where=PRNAME%3D%27Alberta%27&returnGeometry=true&returnTrueCurves=false&returnExtentOnly=false&f=geojson';
-    map.on('load', function() {
+    map.on('load', function() { // above: second variable for other province
         window.setInterval(function() {
-            map.getSource('canada','canada2').setData(url,urlTwo);
+            map.getSource('canada','canada2').setData(url,urlTwo); // Add extra id and variable
         }, 2000);
 
         map.addSource('canada', { type: 'geojson', data: url });
@@ -38,15 +38,15 @@
             'type': 'fill',
             'source': 'canada',
             'layout': {},
-            'paint': {'fill-color': '#3D1159','fill-opacity': 0.4}
+            'paint': {'fill-color': '#3D1159','fill-opacity': 0.4} // change graphics
         });
-        map.addSource('canada2', { type: 'geojson', data: urlTwo });
+        map.addSource('canada2', { type: 'geojson', data: urlTwo }); // add source/layer for urlTwo
         map.addLayer({
             'id': 'canada2',
             'type': 'fill',
             'source': 'canada2',
             'layout': {},
-            'paint': {'fill-color': '#5490FE','fill-opacity': 0.4}
+            'paint': {'fill-color': '#5490FE','fill-opacity': 0.4} // change graphics
         });
     });
 </script>
