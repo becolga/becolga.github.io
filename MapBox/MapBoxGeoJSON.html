@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Double2 GeoJSON Original Add GeoJSON from ArcGIS Server</title>
+<title>GeoJSON Original Add GeoJSON from ArcGIS Server</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />
@@ -29,10 +29,10 @@
     var urlTwo = 'https://luna.flemingcollege.ca/arcgis/rest/services/Geom99/BecolgaCanadaPro/MapServer/0/query?where=PRNAME%3D%27Alberta%27&returnGeometry=true&returnTrueCurves=false&returnExtentOnly=false&f=geojson';
     map.on('load', function() {
         window.setInterval(function() {
-            map.getSource('canada').setData(url,urlTwo);
+            map.getSource('canada').setData(url);
         }, 2000);
 
-        map.addSource('canada', { type: 'geojson', data: url,urlTwo });
+        map.addSource('canada', { type: 'geojson', data: url });
         map.addLayer({
             'id': 'canada',
             'type': 'fill',
