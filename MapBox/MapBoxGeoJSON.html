@@ -29,7 +29,7 @@
     var urlTwo = 'https://luna.flemingcollege.ca/arcgis/rest/services/Geom99/BecolgaCanadaPro/MapServer/0/query?where=PRNAME%3D%27Alberta%27&returnGeometry=true&returnTrueCurves=false&returnExtentOnly=false&f=geojson';
     map.on('load', function() {
         window.setInterval(function() {
-            map.getSource('canada').setData(url,urlTwo);
+            map.getSource('canada','canada2').setData(url,urlTwo);
         }, 2000);
 
         map.addSource('canada', { type: 'geojson', data: url });
@@ -40,7 +40,7 @@
             'layout': {},
             'paint': {'fill-color': '#088','fill-opacity': 0.8}
         });
-        map.addSource('canada', { type: 'geojson', data: urlTwo });
+        map.addSource('canada2', { type: 'geojson', data: urlTwo });
         map.addLayer({
             'id': 'canada2',
             'type': 'fill',
