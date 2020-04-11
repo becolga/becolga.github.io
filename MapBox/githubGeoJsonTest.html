@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Luna Two Provinces GeoJSON Output</title>
+<title>Github Hosted GeoJSON Output</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />
@@ -21,8 +21,8 @@
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/becolga/ck7tisze803xa1ipes67urq7v', // Custom Mapbox style
-        zoom: 3,
-        center: [-100.0, 50.0]
+        zoom: 9,
+        center: [-77, 39.0]
     });
     // Modify this to place your own map service URL here. Show one or more provinces--do not just show Ontario like this example. 
     var url = 'https://luna.flemingcollege.ca/arcgis/rest/services/Geom99/BecolgaCanadaPro/MapServer/0/query?where=PRNAME+%3D+%27Nunavut%27+OR+PRNAME+%3D+%27Ontario%27&text=&objectIds=&time=&geometry=&geometryType=esriGeometryPolygon&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&having=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&queryByDistance=&returnExtentOnly=false&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&featureEncoding=esriDefault&f=geojson';
