@@ -18,8 +18,11 @@
 require([
   "esri/Map",
   "esri/views/MapView",
-  "esri/widgets/Search"
-], function(Map, MapView, Search) {
+  "esri/widgets/Search",
+  "esri/tasks/locator"
+], function(Map, MapView, Search, Locator) {
+  
+  var locatorurl: "https://luna.flemingcollege.ca/arcgis/rest/services/P2009/Master_Composite_1/GeocodeServer";
   
   var map = new Map({
     basemap: "topo-vector"
@@ -34,12 +37,17 @@ require([
   
   // Add Search widget
   var search = new Search({
-    view: view,
-    enableSourcesMenu: true,
+    sources: [
+      {
+        //Pass locator
+        locator: new Locator(locatorurl)
+      }
+    ],        
+    view: view
   });
   view.ui.add(search, "top-right"); // Add to the map
         
-  // Find address
+ /* // Find address
   
   view.on("click", function(evt){
     search.clear(); 
@@ -55,9 +63,9 @@ require([
           showPopup(address, evt.mapPoint);
         }, function(err) { // Show no address found
           showPopup("No address found.", evt.mapPoint);
-        });
+        }); 
     }
-  });
+  }); 
   
   function showPopup(address, pt) {
     view.popup.open({
@@ -66,8 +74,8 @@ require([
       location: pt
     });
   }
-
-});
+*/
+}); 
 </script>
 </head>
 <body>
