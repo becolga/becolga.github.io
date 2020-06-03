@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
-  <title>1 Search widget using custom locator</title>
+  <title>3 Search widget using custom locator</title>
   <link rel="stylesheet" href="https://js.arcgis.com/3.32/esri/css/esri.css">
   <style>
     html,
@@ -59,18 +59,17 @@
               //Pass in the custom locator to the sources
               locator: new Locator(locatorUrl),
               singleLineFieldName: "AssetID",
-              outFields: ["Match_addr"],
-              name: "HBR_Asset",
-              placeholder: "H-L-N-EW-090-GLO-001-403-OWT",
+              outFields: ["*"],
+              name: "Ben & Mara Locator",
+              placeholder: "Locate",
               highlightSymbol: new PictureMarkerSymbol("https://js.arcgis.com/3.32/esri/dijit/Search/images/search-pointer.png", 36, 36).setOffset(9, 18),
               //Create an InfoTemplate
-              infoTemplate: new InfoTemplate("Asset ID", "ID: ${Match_addr}")
+              infoTemplate: new InfoTemplate("Asset ID", "ID: ${*}")
             }
           ],
           map: map,
-          enableSearchingAll: false,
+          enableSearchingAll: true,
           autoComplete: true,
-          value: "H-L-N-EW-090-GLO-001-403-OWT"
         }, "search");
 
       search.startup();
