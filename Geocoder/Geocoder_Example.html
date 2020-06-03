@@ -58,13 +58,13 @@
             {
               //Pass in the custom locator to the sources
               locator: new Locator(locatorUrl),
-              singleLineFieldName: "AssetID",
+              singleLineFieldName: "Address",
               outFields: ["*"],
               name: "Ben & Mara Locator",
               placeholder: "Locate",
               highlightSymbol: new PictureMarkerSymbol("https://js.arcgis.com/3.32/esri/dijit/Search/images/search-pointer.png", 36, 36).setOffset(9, 18),
               //Create an InfoTemplate
-              infoTemplate: new InfoTemplate("Asset ID", "ID: ${*}")
+              infoTemplate: new InfoTemplate("Address", "ID: ${*}")
             }
           ],
           map: map,
