@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
-  <title>2 Locator</title>
+  <title>3 Locator</title>
   <link rel="stylesheet" href="https://js.arcgis.com/3.32/esri/css/esri.css">
   <style>
     html,
@@ -33,12 +33,39 @@
       width: 15.625rem;
     }
 	
-    .arcgisSearch .showMoreResults .resultsList {
-      display: block;
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px solid #ccc;
-    }
+.arcgisSearch .moreResults .moreHeader {
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+	.arcgisSearch .moreResults .moreItem {
+	  margin-bottom: 10px;
+	}
+
+	.arcgisSearch .moreResults .resultsList {
+	  display: none;
+	}
+
+	.arcgisSearch .moreResults .resultsList ul {
+	  list-style: none;
+	  margin: 0 0 10px 0;
+	  padding: 0;
+	}
+
+	.arcgisSearch .moreResults .resultsList li {
+	  padding: 2px 0;
+	}
+
+	.arcgisSearch .moreResults .resultsList .popupHeader {
+	  font-weight: bold;
+	}
+
+	.arcgisSearch .showMoreResults .resultsList {
+	  display: block;
+	  margin-top: 10px;
+	  padding-top: 10px;
+	  border-top: 1px solid #ccc;
+	}
 	
   </style>
 
