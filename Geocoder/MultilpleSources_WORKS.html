@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
-  <title>1 Multi-Locator</title>
+  <title>Ben & Mara's Locator Service</title>
   <link rel="stylesheet" href="https://js.arcgis.com/3.32/esri/css/esri.css">
   <link rel="stylesheet" href="https://js.arcgis.com/3.32/dijit/themes/claro/claro.css">
   <style>
@@ -42,17 +42,15 @@
       "esri/map",
       "esri/tasks/locator",
       "esri/dijit/Search",
-      "esri/SpatialReference",
-      "esri/symbols/PictureMarkerSymbol",
-      "esri/InfoTemplate",
-      "dojo/domReady!"
-    ], function (Map, Locator, Search, PictureMarkerSymbol, InfoTemplate){
+      "esri/symbols/PictureMarkerSymbol"
+    ], function (Map, Locator, Search, PictureMarkerSymbol){
       var map;
       map = new Map("map", {
         basemap: "topo",
         center: [-79.386925,43.642970], // lon, lat
         zoom: 13
       });
+         
       var search = new Search(
         {
           map: map,
