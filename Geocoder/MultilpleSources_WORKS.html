@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
-  <title>Ben & Mara's Locator Service</title>
+  <title>1 Multi-Locator</title>
   <link rel="stylesheet" href="https://js.arcgis.com/3.32/esri/css/esri.css">
   <link rel="stylesheet" href="https://js.arcgis.com/3.32/dijit/themes/claro/claro.css">
   <style>
@@ -59,7 +59,7 @@
           enableSearchingAll: true,
           enableSourcesMenu: true,
           autoComplete: true,
-	  maxSuggestions: 50,	
+	        maxSuggestions: 50,	
           sources: [] // Removes ESRI World Geocoding Service Source: https://community.esri.com/thread/238940-how-to-hide-esri-world-geocoder-in-the-search-widght-with-arcgis-js-api-3x
         }, "search");
 
@@ -70,23 +70,23 @@
         outFields: ["*"],
         exactMatch: false,
         name: "Main Composite",
-        placeholder: "Type a Place Name"
+        placeholder: "Find an address, place or FSA",
        });
       
       sources.push({
         locator: new Locator ("https://luna.flemingcollege.ca/arcgis/rest/services/P2009/Toronto_Intersections_Composite/GeocodeServer"),
         outFields: ["*"],
         exactMatch: false,
-        name: "Toronto Intersections",
-        placeholder: "Type an Address"
+        name: "Enhanced Toronto Intersections",
+        placeholder: "Find a Toronto Intersection"
        });      
       
       sources.push({
         locator: new Locator ("https://luna.flemingcollege.ca/arcgis/rest/services/P2009/Ontario_Intersection_Composite/GeocodeServer"),
         outFields: ["*"],
         exactMatch: false,
-        name: "Ontario Intersections",
-        placeholder: "Type an Address"
+        name: "Enhanced Ontario Intersections",
+        placeholder: "Find an Ontario Intersection"
        });        
       search.set("sources", sources);  
       search.startup();
