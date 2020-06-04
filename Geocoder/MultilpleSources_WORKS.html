@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
-  <title>1 Multi-Locator</title>
+  <title>Ben & Mara's Locator Service</title>
   <link rel="stylesheet" href="https://js.arcgis.com/3.32/esri/css/esri.css">
   <link rel="stylesheet" href="https://js.arcgis.com/3.32/dijit/themes/claro/claro.css">
   <style>
@@ -33,12 +33,6 @@
     .arcgisSearch .searchGroup .searchInput {
       width: 17.625rem;
     }
-	
-    .arcgisSearch .showSources .sourcesMenu {
-       display: block;
-       width: 70%;
-    }
-
 	
   </style>
 
@@ -72,10 +66,10 @@
       var sources = search.get("sources");
       
       sources.push({
-        locator: new Locator ("https://luna.flemingcollege.ca/arcgis/rest/services/P2009/Canada_Placenames_Locator/GeocodeServer"),
+        locator: new Locator ("https://luna.flemingcollege.ca/arcgis/rest/services/P2009/Main_Web_Composite/GeocodeServer"),
         outFields: ["*"],
         exactMatch: false,
-        name: "Place Names",
+        name: "Main Composite",
         placeholder: "Type a Place Name"
        });
       
@@ -87,6 +81,13 @@
         placeholder: "Type an Address"
        });      
       
+      sources.push({
+        locator: new Locator ("https://luna.flemingcollege.ca/arcgis/rest/services/P2009/Ontario_Intersection_Composite/GeocodeServer"),
+        outFields: ["*"],
+        exactMatch: false,
+        name: "Ontario Intersections",
+        placeholder: "Type an Address"
+       });        
       search.set("sources", sources);  
       search.startup();
     });
