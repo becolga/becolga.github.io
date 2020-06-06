@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
-  <title>!! 8 Ben & Mara's Geocoder Test</title>
+  <title>Search widget using custom locator</title>
   <link rel="stylesheet" href="https://js.arcgis.com/3.32/esri/css/esri.css">
   <style>
     html,
@@ -40,31 +40,37 @@
       "esri/map",
       "esri/tasks/locator",
       "esri/dijit/Search",
-      "esri/SpatialReference",
       "esri/symbols/PictureMarkerSymbol",
       "esri/InfoTemplate",
       "dojo/domReady!"
     ], function (Map, Locator, Search, PictureMarkerSymbol, InfoTemplate){
       var map;
-      var locatorUrl = "https://luna.flemingcollege.ca/arcgis/rest/services/P2009/Master_Composite_1/GeocodeServer";
+      var locatorUrl = "https://luna.flemingcollege.ca/arcgis/rest/services/P2009/Main_Web_Composite/GeocodeServer/";
       map = new Map("map", {
         basemap: "topo",
-        center: [-79.386925,43.642970], // lon, lat
-        zoom: 13
+        center: [4.8, 52], // lon, lat
+        zoom: 9
       });
+
       var search = new Search(
         {
           sources: [
             {
               //Pass in the custom locator to the sources
               locator: new Locator(locatorUrl),
-              outFields: ["*"],              
+              singleLineFieldName: "AssetID",
+              outFields: ["Match_addr"],
+              name: "HBR_Asset",
+              placeholder: "H-L-N-EW-090-GLO-001-403-OWT",
+              highlightSymbol: new PictureMarkerSymbol("https://js.arcgis.com/3.32/esri/dijit/Search/images/search-pointer.png", 36, 36).setOffset(9, 18),
+              //Create an InfoTemplate
+              infoTemplate: new InfoTemplate("Asset ID", "ID: ${Match_addr}")
             }
           ],
           map: map,
-          enableSearchingAll: true,
-          enableSourcesMenu: true,
+          enableSearchingAll: false,
           autoComplete: true,
+          value: "H-L-N-EW-090-GLO-001-403-OWT"
         }, "search");
 
       search.startup();
