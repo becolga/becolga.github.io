@@ -54,8 +54,8 @@
       var locatorUrl = "https://luna.flemingcollege.ca/arcgis/rest/services/P2009/Master_Composite_June_2020/GeocodeServer/"; // REST Endpoint for Master Composite
       map = new Map("map", {
         basemap: "topo",
-        center: [-79.387079, 43.642539], // lon, lat Toronto
-        zoom: 14
+        center: [-79.378233, 43.658393], // lon, lat Toronto 43.658393, -79.378233
+        zoom: 13
       });
 
       var home = new HomeButton({ // Variable to instantiate Home Button on start up. Source: https://developers.arcgis.com/javascript/3/jssamples/widget_home.html
@@ -72,7 +72,7 @@
               outFields: ["*"],
               name: "Master_Composite_June_2020",
               placeholder: "Search for a location (Address, Intersection, City or FSA)", // Prompt text
-              highlightSymbol: new PictureMarkerSymbol("https://js.arcgis.com/3.32/esri/dijit/Search/images/search-pointer.png", 36, 36).setOffset(9, 18), // Create new picture marker symbol and references its location.
+              highlightSymbol: new PictureMarkerSymbol("https://becolga.github.io/Geocoder/search.svg", 36, 36).setOffset(9, 18), // Create new picture marker symbol and references its location.
             }
           ],
           map: map,
