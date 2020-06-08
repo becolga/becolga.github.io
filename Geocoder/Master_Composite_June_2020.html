@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+  <title>Toronto Police Locator Service</title>
+  <link rel="stylesheet" href="https://js.arcgis.com/3.32/esri/css/esri.css">
+  <!-- This document was devloped using various examples of implementing ArcGIS API for Javascript 3.32. The document was tailored to meet our needs in showcasing our composite locator. These sources are as follows: "Search Using a Custom Locator", which served as the main template; https://developers.arcgis.com/javascript/3/jssamples/search_customlocator.html, "Search with Customization"; https://developers.arcgis.com/javascript/3/jssamples/search_customized.html, "Home Button"; https://developers.arcgis.com/javascript/3/jssamples/widget_home.html -->
+  <style>
+    html,
+    body,
+    #map {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #FFFFFF;
+      overflow: hidden;
+      font-family: "Trebuchet MS";
+    }
+
+    #search { /* ID Selector for Search Bar. Source: https://developers.arcgis.com/javascript/3/jssamples/search_customlocator.html */
+      display: block;
+      position: absolute;
+      z-index: 2;
+      top: 20px;
+      left: 75px;
+    }
+    #HomeButton { /* ID Selector for Home Button. Source: https://developers.arcgis.com/javascript/3/jssamples/widget_home.html */
+      position: absolute;
+      top: 95px;
+      left: 20px;
+      z-index: 50;
+    }
+    .arcgisSearch .searchGroup .searchInput {
+      width: 23rem; /* width of search bar */
+    }
+  </style>
+
+  <script src="https://js.arcgis.com/3.32/"></script>
+  <script>
+    require([
+      "esri/map",
+      "esri/tasks/locator",
+      "esri/dijit/Search",
+      "esri/dijit/HomeButton",
+      "esri/symbols/PictureMarkerSymbol",
+      "dojo/domReady!"
+    ], function (Map, Locator, Search, HomeButton, PictureMarkerSymbol){
+      var map;
+      var locatorUrl = "https://luna.flemingcollege.ca/arcgis/rest/services/P2009/Master_Composite_June_2020/GeocodeServer/"; // REST Endpoint for Master Composite
+      map = new Map("map", {
+        basemap: "topo",
+        center: [-79.387079, 43.642539], // lon, lat Toronto
+        zoom: 13
+      });
+
+      var home = new HomeButton({ // Variable to instantiate Home Button on start up. Source: https://developers.arcgis.com/javascript/3/jssamples/widget_home.html
+        map: map
+      }, "HomeButton");
+      home.startup();
+            
+      var search = new Search( // Variable to instantiate search on start up. Source: https://developers.arcgis.com/javascript/3/jssamples/search_customlocator.html
+        {
+          sources: [
+            {
+              //Pass in the custom locator to the sources
+              locator: new Locator(locatorUrl), // Creates new locator. Source: https://developers.arcgis.com/javascript/3/jssamples/search_customlocator.html
+              outFields: ["*"],
+              name: "Master_Composite_June_2020",
+              placeholder: "Search for a location (Address, Intersection, City or FSA)", // Prompt text
+              highlightSymbol: new PictureMarkerSymbol("https://js.arcgis.com/3.32/esri/dijit/Search/images/search-pointer.png", 36, 36).setOffset(9, 18), // Create new picture marker symbol and references its location.
+            }
+          ],
+          map: map,
+          enableSearchingAll: true,
+          autoComplete: true,
+        }, "search");
+
+      search.startup();
+    });
+  </script>
+</head>
+
+<body>
+  <div id="search"></div> <!-- Search container -->
+  <div id="map"></div> <!-- Map container -->
+   <div id="HomeButton"></div> <!-- Home button container -->
+</body>
+</html>
