@@ -23,19 +23,21 @@ require([
 ], function(Map, MapView, Search, Locator) {
   
   var map = new Map({
-    basemap: "topo-vector"
+    basemap: "topo"
   });
   
   var view = new MapView({
     container: "viewDiv",  
     map: map,
-    center: [-118.80543,34.02700],
+    center: [-79.378233, 43.658393],
     zoom: 13
   });
   
   // Add Search widget
   var search = new Search({
     view: view,
+    includeDefaultSources: false,
+    maxSuggestions:100,
     sources: [
       {
         locator: new Locator({ url: "https://luna.flemingcollege.ca/arcgis/rest/services/P2009/Master_Composite_June_2020/GeocodeServer" }),
