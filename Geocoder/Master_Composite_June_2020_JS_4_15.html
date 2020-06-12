@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Composite Locator JS 4.15 Test</title>
+<!--The main template of this HTML document was sourced from the "Search for an address" Tutorial on ArcGIS for Developers found here: https://developers.arcgis.com/labs/javascript/search-for-an-address/. Locator functionality was sourced from here: https://developers.arcgis.com/javascript/latest/api-reference/esri-tasks-Locator.html#url. Home Button functionality was sourced from here: https://developers.arcgis.com/javascript/latest/sample-code/widgets-home/index.html  -->
+<style>
+  html, body, #viewDiv {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+  }
+</style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.15/esri/css/main.css">
+<script src="https://js.arcgis.com/4.15/"></script>
+  
+  <script>
+require([
+  "esri/Map",
+  "esri/views/MapView",
+  "esri/widgets/Search",
+  "esri/tasks/Locator",
+  "esri/widgets/Home",
+], function(Map, MapView, Search, Locator, Home) {
+  
+  var map = new Map({
+    basemap: "topo"
+  });
+  
+  var view = new MapView({
+    container: "viewDiv",  
+    map: map,
+    center: [-79.378233, 43.658393],
+    zoom: 13
+  });
+  var homeBtn = new Home({ //Instantiates new Home Button widget
+    view: view
+  });
+  
+ 
+  // Add Search widget
+  var search = new Search({ //Instantiates new Search widget
+    view: view,
+    includeDefaultSources: false, // removes ArcGIS World Geocoding Service
+    maxSuggestions:100,
+     sources: [
+      {
+        locator: new Locator({ // Instantiates new Locator
+         url: "https://luna.flemingcollege.ca/arcgis/rest/services/P2009/Master_Composite_June_2020/GeocodeServer" }), // 
+        name: "Master Composite",
+        outfields: ["*"],
+        placeholder: "Search composite locator", // Prompt text
+      }]
+  });
+  view.ui.add(search, "top-right"); // Add search widget to the map
+  view.ui.add(homeBtn, "top-left"); // Add Home widget to the map
+      
+  
+  function showPopup(address, pt) {
+    view.popup.open({
+      title:  + Math.round(pt.longitude * 100000)/100000 + ", " + Math.round(pt.latitude * 100000)/100000,
+      content: address,
+      location: pt
+    });
+  }
+
+});
+</script>
+</head>
+<body>
+  <div id="viewDiv"></div>
+</body>
+</html> 
