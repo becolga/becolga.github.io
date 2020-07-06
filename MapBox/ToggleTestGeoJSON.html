@@ -93,7 +93,7 @@
 
     map.addControl(geocoder);
     var url = 'https://becolga.github.io/MapBox/TesterWM.geojson';
-    var urlTwo = 'https://becolga.github.io/MapBox/Backerpoly.geojson';
+    var urlTwo = 'becolga.github.io/MapBox/CVCA_RevisedBoundary_Oct2017.geojson';
     map.on('load', function() { // above: Second variable for other province
         window.setInterval(function() {
             map.getSource('canada','canada2').setData(url,urlTwo); // ad second id / variable
