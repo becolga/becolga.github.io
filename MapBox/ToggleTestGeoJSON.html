@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>GeoJSON Test 4</title>
+<title>GeoJSON Test 5</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
@@ -70,52 +70,33 @@
         zoom: 12,
         center: [-77.036493, 38.893696]
     });
+    var url = 'https://becolga.github.io/MapBox/TesterWM.geojson';
+    var urlTwo = 'https://becolga.github.io/MapBox/Backerpoly.geojson';
+    map.on('load', function() { // above: Second variable for other province
+        window.setInterval(function() {
+            map.getSource('canada','canada2').setData(url,urlTwo); // ad second id / variable
+        }, 2000);
 
-    map.on('load', function() {
-        // add source and layer for museums
-        map.addSource('museums', {
-            type: 'geojson',
-            url: 'https://becolga.github.io/MapBox/Backerpoly.geojson'
-        });
+        map.addSource('canada', { type: 'geojson', data: url });
         map.addLayer({
-            'id': 'museums',
+            'id': 'canada',
+            'type': 'circle',
+            'source': 'canada',
+            'layout': {},
+            'paint': {'circle-color': '#3D1159','circle-radius': 5} // change graphics
+        });
+        map.addSource('canada2', { type: 'geojson', data: urlTwo }); //add second source / layer
+        map.addLayer({
+            'id': 'canada2',
             'type': 'fill',
-            'source': 'museums',
-            'layout': {
-                // make layer visible by default
-                'visibility': 'visible'
-            },
-            'paint': {
-                'fill-color': '#3D1159',
-		'fill-opacity': 0.4
-            },
-        });
-
-        // add source and layer for contours
-        map.addSource('contours', {
-            type: 'vector',
-            url: 'mapbox://mapbox.mapbox-terrain-v2'
-        });
-        map.addLayer({
-            'id': 'contours',
-            'type': 'line',
-            'source': 'contours',
-            'source-layer': 'contour',
-            'layout': {
-                // make layer visible by default
-                'visibility': 'visible',
-                'line-join': 'round',
-                'line-cap': 'round'
-            },
-            'paint': {
-                'line-color': '#877b59',
-                'line-width': 1
-            }
+            'source': 'canada2',
+            'layout': {},
+            'paint': {'fill-color': '#5490FE','fill-opacity': 0.4} // change graphics
         });
     });
 
     // enumerate ids of the layers
-    var toggleableLayerIds = ['contours', 'museums'];
+    var toggleableLayerIds = ['canada', 'canada2'];
 
     // set up the corresponding toggle button for each layer
     for (var i = 0; i < toggleableLayerIds.length; i++) {
