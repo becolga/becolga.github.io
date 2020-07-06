@@ -15,42 +15,63 @@
 <div id="map"></div>
 
 <script>
-	// Modified from: https://docs.mapbox.com/mapbox-gl-js/example/live-geojson/
-	// Make sure you use your own Access Token
-	mapboxgl.accessToken = 'pk.eyJ1IjoiYmVjb2xnYSIsImEiOiJjazdnb2ppZzAwMTA1M2xtdWg2bTlvbzV4In0.2_DTncTCYpUxk1rojepU6g';
+	// TO MAKE THE MAP APPEAR YOU MUST
+	// ADD YOUR ACCESS TOKEN FROM
+	// https://account.mapbox.com
+	mapboxgl.accessToken = '<your access token here>';
     var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/becolga/ck7tisze803xa1ipes67urq7v', // Custom Mapbox style
-        zoom: 12,
-        center: [-77.036493, 38.893696]
+        style: 'mapbox://styles/mapbox/streets-v11',
+        zoom: 15,
+        center: [-71.97722138410576, -13.517379300798098]
     });
-    // Modify this to place your own map service URL here. Show one or more provinces--do not just show Ontario like this example. 
-    var url = 'https://becolga.github.io/MapBox/TesterWM.geojson';
-    var urlTwo = 'https://becolga.github.io/MapBox/Backerpoly.geojson';
-    map.on('load', function() { // above: Second variable for other province
-        window.setInterval(function() {
-            map.getSource('canada','canada2').setData(url,urlTwo); // ad second id / variable
-        }, 2000);
 
-        map.addSource('canada', { type: 'geojson', data: url });
-        map.addLayer({
-            'id': 'canada',
-            'type': 'circle',
-            'source': 'canada',
-            'layout': {},
-            'paint': {'circle-color': '#3D1159','circle-radius': 5} // change graphics
+    map.on('load', function() {
+        // add source and layer for museums
+        map.addSource('museums', {
+            type: 'vector',
+            url: 'mapbox://mapbox.2opop9hr'
         });
-        map.addSource('canada2', { type: 'geojson', data: urlTwo }); //add second source / layer
         map.addLayer({
-            'id': 'canada2',
-            'type': 'fill',
-            'source': 'canada2',
-            'layout': {},
-            'paint': {'fill-color': '#5490FE','fill-opacity': 0.4} // change graphics
+            'id': 'museums',
+            'type': 'circle',
+            'source': 'museums',
+            'layout': {
+                // make layer visible by default
+                'visibility': 'visible'
+            },
+            'paint': {
+                'circle-radius': 8,
+                'circle-color': 'rgba(55,148,179,1)'
+            },
+            'source-layer': 'museum-cusco'
+        });
+
+        // add source and layer for contours
+        map.addSource('contours', {
+            type: 'vector',
+            url: 'mapbox://mapbox.mapbox-terrain-v2'
+        });
+        map.addLayer({
+            'id': 'contours',
+            'type': 'line',
+            'source': 'contours',
+            'source-layer': 'contour',
+            'layout': {
+                // make layer visible by default
+                'visibility': 'visible',
+                'line-join': 'round',
+                'line-cap': 'round'
+            },
+            'paint': {
+                'line-color': '#877b59',
+                'line-width': 1
+            }
         });
     });
-	    // enumerate ids of the layers
-    var toggleableLayerIds = ['canada', 'canada2'];
+
+    // enumerate ids of the layers
+    var toggleableLayerIds = ['contours', 'museums'];
 
     // set up the corresponding toggle button for each layer
     for (var i = 0; i < toggleableLayerIds.length; i++) {
