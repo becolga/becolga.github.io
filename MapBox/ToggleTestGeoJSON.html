@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>GeoJSON Test 10 with Geocoder</title>
+<title>GeoJSON Test 11 with Geocoder</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
@@ -93,7 +93,7 @@
 
     map.addControl(geocoder);
     var url = 'https://becolga.github.io/MapBox/TesterWM.geojson';
-    var urlTwo = 'becolga.github.io/MapBox/boundary.geojson';
+    var urlTwo = 'https://becolga.github.io/MapBox/boundary.geojson';
     map.on('load', function() { // above: Second variable for other province
         window.setInterval(function() {
             map.getSource('canada','canada2').setData(url,urlTwo); // ad second id / variable
